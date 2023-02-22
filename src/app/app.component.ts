@@ -67,6 +67,8 @@ export class AppComponent implements OnInit {
       this.canvas.add(this.getCircle(componentGroup.left, componentGroup.top, componentGroup.width, componentGroup.height));
     } else if (componentGroup.type === 'line') {
       this.canvas.add(this.getLine(componentGroup.left, componentGroup.top, componentGroup.width, componentGroup.height));
+    } else if (componentGroup.type === 'text') {
+      this.canvas.add(this.getText(componentGroup.left, componentGroup.top, componentGroup.width, componentGroup.height));
     }
   }
 
@@ -93,6 +95,15 @@ export class AppComponent implements OnInit {
       left, top, left + width, top + height
     ], {
       fill: 'white', stroke: 'black', strokeWidth: 0.2,
+    });
+  }
+
+  getText(left: number, top: number, width: number, height: number) {
+    return new fromFabric.fabric.Text('Text', {
+      left: left,
+      top: top,
+      fill: 'black',
+      fontSize: 15
     });
   }
 }
